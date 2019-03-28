@@ -1,0 +1,65 @@
+<html>
+    
+<!-- import my data -->
+<script src="https://drive.google.com/uc?export=view&id=1KRraNJYYA4fXmnHpF4jUZvfH0jf8m53M">
+    
+    </script>
+        
+<script>
+    
+    console.log(data);
+    
+    var afghan = data[0].Value;
+    console.log(afghan);     
+    
+    var nospace = afghan.replace(" "," ");
+    console.log(nospace);
+    
+    var afghanint = parseInt(nospace);
+    console.log(afghanint);
+    
+    
+    </script>     
+    
+    <canvas id='myc'></canvas> <br>
+    <select id = 'mysel' onchange="drawSelect(this.value)">
+    </select>
+   
+    <script>
+        
+        var c = document.getElementById('myc')
+        var ctx = c.getContext('2d');
+                
+        var mycnames = "";
+        var cname = "";
+        for (i=0;i < data.length; i=i+1) {
+            if (data[i].dims.COUNTRY != cname){
+                mycnames = mycnames + "<option>" + data[i].dims.COUNTRY + "</option>";
+                cname = data[i].dims.COUNTRY;
+            
+            }
+            
+        }
+        
+        var selpointer = document.getElementById('mysel');
+        selpointer.innerHTML = mycnames;
+        
+        function drawSelect(val) { 
+             for (i=0;i < data.length; i=i+1) {
+            if (data[i].dims.COUNTRY == val){
+                console.log(data[i].dims.COUNTRY);
+                console.log(data[i + 1].Value);
+                ctx.fillStyle = "white";
+                ctx.fillRect(0,0,800,50);
+                ctx.fillStyle = "red";
+                ctx.fillRect(0,0,data[i + 1].Value,50);
+                break;
+            
+        }
+             }
+        }
+    </script>
+
+
+
+</html>
