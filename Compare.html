@@ -1,0 +1,102 @@
+<style>
+
+</style>
+
+<html>
+    <body background = "Compare.jpg">
+
+    
+        
+    </body>
+
+    <font face = "Didot"><center><h1 style="border: 1px solid white ">Compare Different Countries</h1></center></font>
+    <font face = "Didot"><center><h4 style="border: 1px solid white ">Road Traffic Deaths Every Year Per Country (Whole Population)</h4></center></font>
+
+    <!--<script src="data.json"></script>-->
+    <!-- import my data -->
+    <script src="https://drive.google.com/uc?export=view&id=1KRraNJYYA4fXmnHpF4jUZvfH0jf8m53M"></script>
+    
+ <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+            
+    <body >
+
+        <!-- HTML canvas tag with an id, so it can be referenced in code -->  
+        <canvas id="myc" width="800px" height="60px"></canvas><br>
+        <!-- HTML select tag (pulldown), with a onchange event pointing to a function -->
+        <select class="browser-default" id='mysel' onchange="checkSelect(this.value)"></select>
+    
+    </body>
+
+    
+    <center> <div style="position: absolute; bottom: -200px; background-color: white; color: black; width: 1300px; height: 60px; left: 0px;"> <br>Aaron Ratnavel // UCC // 2019 // Mowbrays</div> </center>
+    
+    <a href="index.html" style="position: absolute; top: 0px; left: 0px; text-decoration: none; color: black;" class="btn btn-small waves-effect waves-dark white">home</a>
+    
+    
+
+    
+    
+    
+    <script>
+    
+        console.log(data);
+    
+        var afghan = data[0].Value;
+        console.log(afghan);     
+    
+        var nospace = afghan.replace(" "," ");
+        console.log(nospace);
+    
+    var afghanint = parseInt(nospace);
+    console.log(afghanint);
+        
+    // loop to create options for select pulldown tag using str concatenation
+    var mycnames = "";
+    var cname = "";
+    for (i=0;i < data.length; i=i+1) {
+        // use if to check if there is a duplicate country
+        if (data[i].dims.COUNTRY != cname) {
+           mycnames = mycnames + "<option>" + data[i].dims.COUNTRY + "</option>";
+           cname = data[i].dims.COUNTRY;
+        }
+    }
+
+    // grab a reference to select tag and store it in a variable
+    var selpointer = document.getElementById('mysel');
+    // use innerHTML function to fill select pulldown with options created in loop
+    selpointer.innerHTML = mycnames;
+    
+    // grab a reference to the canvas and store it in a variable, grab drawing context
+    var c = document.getElementById('myc');
+    var ctx = c.getContext('2d');
+    
+    // function that is called onchange to select pulldown
+    function checkSelect(cname) { 
+        // sequential search through entire json data for selected country
+        for (i=0;i < data.length; i=i+1) {
+            if (data[i].dims.COUNTRY == cname) {
+               // draw white rectangle to erase previous rectangle
+               ctx.fillStyle = "white"; 
+               ctx.fillRect(0,0,800,50); 
+               // draw red rectangle the size of all deaths
+               ctx.fillStyle = "red";
+               var remhardbrace = data[i].Value.split('[')[0]
+               var cleandata = remhardbrace.split(' ').join(''); // remove all spaces
+               ctx.fillRect(0,0,cleandata/100,50);
+               ctx.fillStyle = "black";
+               ctx.font = "20px Arial";
+               ctx.fillText(cleandata,10,30);
+               break; // once found, break out of loop for efficiency
+            }
+        }
+    }
+</script>
+    
+    
+        
+
+</html>

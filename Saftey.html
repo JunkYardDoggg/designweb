@@ -191,7 +191,8 @@
 </style>
 <html>
 
-    <font face = "Didot"><center><h1 style="border: 1px solid white ">Which Coutnries are the Safest to drive in?</h1></center></font>
+    <font face = "Didot"><center><h1 style="border: 1px solid white ">Which countries
+        are the Safest to drive in?</h1></center></font>
     
     <font face = "Didot"><center><h4 style="border: 1px solid white ">How can you stay safe while on the road?</h4></center></font>
 
@@ -236,6 +237,82 @@
     
 <a href="index.html" style="position: absolute; top: 0px; left: 0px; text-decoration: none; color: black;" class="btn btn-small waves-effect waves-dark white">home</a>
 
+    <style>
+    .button3{
+ display:inline-block;
+ padding:0.3em 1.2em;
+ margin:0 0.3em 0.3em 0;
+ border-radius:2em;
+ box-sizing: border-box;
+ text-decoration:none;
+ font-family:'Roboto',sans-serif;
+ font-weight:300;
+ color:#FFFFFF;
+ background-color:#4eb5f1;
+ text-align:center;
+ transition: all 0.2s;
+}
+.button3:hover{
+ background-color:#4095c6;
+}
+@media all and (max-width:30em){
+ .button3{
+  display:block;
+  margin:0.2em auto;
+ }
+}
+    </style>
+
+
+<div style="position: absolute; Top: 33%;">
+    <button class = "button3" onclick = hi()>How can you stay safe?</button>
+        <div id = his style = "display: none"> 
+            1. Never lose focus when on the wheel
+            <br> 2. Never use any devices while on the wheel
+            <br> 3. Never be impared while driving
+            <br> 4. Simpley, most countries do not have these types of laws
+            <br> 5. Never drive while tired, or drowsy
+            <br> 6. Keep a 2-second cushion between you and 
+            <br>    the car in front of you
+    
+    </div>
+    </div>
+    <div style="position: absolute; right:0px; Top: 33%;">
+    <button class = "button3" onclick = hi2()>How to avoid first time accidents (Manuel Cars)</button>
+        <div id = his2 style = "display: none"> 
+            1. Never use the gear as a hand rest
+            <br> 2. Never use The clutch to hold yourself on a hill
+            <br> 3. Never rest your foot on the clutch pedal 
+            <br> 4. Never floor the gas pedal qhen your engine is at a low RPM
+            <br> 5. Never use the incorrect gear to gain speed
+            <br> 6. Never brake without your clutch
+    
+    </div>
+    </div>
+
+    
+<script>
+
+        function hi() {
+  var x = document.getElementById("his");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+    
+    function hi2(){
+
+  var x = document.getElementById("his2");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+  }
+    
+    </script>
     
     
 </html>
