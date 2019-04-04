@@ -96,6 +96,81 @@
     }
 </script>
     
+    <style>
+    .button3{
+ display:inline-block;
+ padding:0.3em 1.2em;
+ margin:0 0.3em 0.3em 0;
+ border-radius:2em;
+ box-sizing: border-box;
+ text-decoration:none;
+ font-family:'Roboto',sans-serif;
+ font-weight:300;
+ color:#FFFFFF;
+ background-color:#4eb5f1;
+ text-align:center;
+ transition: all 0.2s;
+}
+.button3:hover{
+ background-color:#4095c6;
+}
+@media all and (max-width:30em){
+ .button3{
+  display:block;
+  margin:0.2em auto;
+ }
+}
+    </style>
+
+
+<div style="position: absolute; Bottom: 25%;">
+    <a style="" class="btn btn-small waves-effect waves-light green" onclick = hi()>Fun Facts</a>
+        <div id = his style = "color: white; display: none"> 
+            1. 1.25 million people die in road crashes each year
+            <br> 2. On average 3,287 deaths a day
+            <br> 3. Each year nearly 400,000 people under 25 die
+            <br> 4. Over 90% of all road fatalities occur in low and middle-income countries
+            <br> 5. Unless action is taken, road traffic injuries are predicted to become 
+            <br> the fifth leading cause of death by 2030
+    
+    </div>
+    </div>
+    <div style="position: absolute; right:0px; Bottom: 25%;">
+    <a style="" class="btn btn-small waves-effect waves-light green" onclick = hi2()>Fun Facts V2</a>
+        <div id = his2 style = "color: white; display: none"> 
+            1. Speed is one of the main problems that cause death
+            <br> 2. Most accidents happen when passengers don`t use a seat belt 
+            <br> 3. Never rest your foot on the clutch pedal 
+            <br> 4. Pedestrians mostly get injured while crossing a road
+            <br> 5. The design of streets can have a significant impact on their safety
+        
+    
+    </div>
+    </div>
+
+    
+<script>
+
+        function hi() {
+  var x = document.getElementById("his");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+    
+    function hi2(){
+
+  var x = document.getElementById("his2");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+  }
+    
+    </script>
     
         
 
