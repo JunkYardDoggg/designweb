@@ -26,8 +26,10 @@
 
         <!-- HTML canvas tag with an id, so it can be referenced in code -->  
         <canvas id="myc" width="800px" height="60px"></canvas><br>
+        <canvas id="myc2" width="800px" height="60px"></canvas><br>
         <!-- HTML select tag (pulldown), with a onchange event pointing to a function -->
         <select class="browser-default" id='mysel' onchange="checkSelect(this.value)"></select>
+        <select class="browser-default" id='mysel2' onchange="checkSelect2(this.value)"></select>
     
     </body>
 
@@ -69,6 +71,10 @@
     var selpointer = document.getElementById('mysel');
     // use innerHTML function to fill select pulldown with options created in loop
     selpointer.innerHTML = mycnames;
+        
+    var selpointer = document.getElementById('mysel2');
+    // use innerHTML function to fill select pulldown with options created in loop
+    selpointer.innerHTML = mycnames;
     
     // grab a reference to the canvas and store it in a variable, grab drawing context
     var c = document.getElementById('myc');
@@ -94,7 +100,84 @@
             }
         }
     }
+    function checkSelect2(cname) { 
+            var c = document.getElementById('myc2');
+    var ctx = c.getContext('2d');
+        // sequential search through entire json data for selected country
+        for (i=0;i < data.length; i=i+1) {
+            if (data[i].dims.COUNTRY == cname) {
+               // draw white rectangle to erase previous rectangle
+               ctx.fillStyle = "white"; 
+               ctx.fillRect(0,0,800,50); 
+               // draw red rectangle the size of all deaths
+               ctx.fillStyle = "red";
+               var remhardbrace = data[i].Value.split('[')[0]
+               var cleandata = remhardbrace.split(' ').join(''); // remove all spaces
+               ctx.fillRect(0,0,cleandata/100,50);
+               ctx.fillStyle = "black";
+               ctx.font = "20px Arial";
+               ctx.fillText(cleandata,10,30);
+               break; // once found, break out of loop for efficiency
+            }
+        }
+    }
 </script>
+    
+     <script>
+    
+        console.log(data);
+    
+        var afghan = data[0].Value;
+        console.log(afghan);     
+    
+        var nospace = afghan.replace(" "," ");
+        console.log(nospace);
+    
+    var afghanint = parseInt(nospace);
+    console.log(afghanint);
+        
+    // loop to create options for select pulldown tag using str concatenation
+    var mycnames = "";
+    var cname = "";
+    for (i=0;i < data.length; i=i+1) {
+        // use if to check if there is a duplicate country
+        if (data[i].dims.COUNTRY != cname) {
+           mycnames = mycnames + "<option>" + data[i].dims.COUNTRY + "</option>";
+           cname = data[i].dims.COUNTRY;
+        }
+    }
+
+    // grab a reference to select tag and store it in a variable
+    var selpointer = document.getElementById('mysel');
+    // use innerHTML function to fill select pulldown with options created in loop
+    selpointer.innerHTML = mycnames;
+    
+    // grab a reference to the canvas and store it in a variable, grab drawing context
+    var c = document.getElementById('myc');
+    var ctx = c.getContext('2d');
+    
+    // function that is called onchange to select pulldown
+    function checkSelect(cname) { 
+        // sequential search through entire json data for selected country
+        for (i=0;i < data.length; i=i+1) {
+            if (data[i].dims.COUNTRY == cname) {
+               // draw white rectangle to erase previous rectangle
+               ctx.fillStyle = "white"; 
+               ctx.fillRect(0,0,800,50); 
+               // draw red rectangle the size of all deaths
+               ctx.fillStyle = "blue";
+               var remhardbrace = data[i].Value.split('[')[0]
+               var cleandata = remhardbrace.split(' ').join(''); // remove all spaces
+               ctx.fillRect(0,0,cleandata/100,50);
+               ctx.fillStyle = "black";
+               ctx.font = "20px Arial";
+               ctx.fillText(cleandata,10,30);
+               break; // once found, break out of loop for efficiency
+            }
+        }
+    }
+</script>
+    
     
     <style>
     .button3{
